@@ -9,7 +9,7 @@ echo 程序运行需网络通畅！
 
 echo
 echo 程序会在2秒后运行
-cd ~/git-code/raspberry-clock
+cd ~/git-code/raspberry-clock/
 echo 1
 /home/pi/git-code/raspberry-clock/naoz/bin/python36 /home/pi/git-code/raspberry-clock/1.py
 echo 2
@@ -24,7 +24,7 @@ echo
 echo 会在3秒后自动播放刚刚生成的mp3,叫醒你起床～～
 
 play /home/pi/git-code/raspberry-clock/test_tmp.mp3
-rm test_tmp.mp3
+echo rm test_tmp.mp3
 echo 
 echo 程序运行完毕！明天见哦～
 echo 正在退出！

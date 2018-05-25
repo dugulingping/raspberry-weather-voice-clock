@@ -20,7 +20,6 @@ def get_weather_json(jsonj):
 	
 		elif jsonj['url_type'] == 'free':
 			weather = {
-				'code' : '200',
 				'date' : jsonj['date'],
 				'url_type' : jsonj['url_type'],
 				'city' : jsonj['city'],
@@ -35,15 +34,15 @@ def get_weather_json(jsonj):
 			}
 		else:
 			weather = {
-				'code' : jsonj['resultcode'],
 				'date' : jsonj['date'],
-				'errorinfo' : '哎呀，独小酱也不知道今天的天气啦！'
+				'url_type' : jsonj['url_type'],
+				'errorinfo' : '哎呀，出错啦！可能是城市输入错误。'
 			}
 	else:
 		weather = {
-			'code' : jsonj['resultcode'],
 			'date' : jsonj['date'],
-			'errorinfo' : "哎呀，天气数据过期啦，请重新获取"
+			'url_type' : jsonj['url_type'],
+			'errorinfo' : "哎呀，天气数据过期啦，请重新获取。"
 			}
 	return weather
 
@@ -72,6 +71,10 @@ def get_weather_info(weather):
 		timeclock = time.strftime('今天是%m月%d日，',time.localtime(time.time()))
 		str = [(timeclock + '今天' + weather['city'] + weather['type']+ ',温度：'+ weather['weather_info'] + ',' +weather['fengli']),]
 		str.append(('今天天气' + weather['qingkuang'] +'。' + weather['notice']))
+	else:
+		timeclock = time.strftime('今天是%m月%d日，',time.localtime(time.time()))
+		str = [timeclock,]
+		str.append(weather['errorinfo'])
 	return str
 
 def main():

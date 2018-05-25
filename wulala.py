@@ -33,41 +33,45 @@ def get_weather_jian():
 '''
 def stringToMp3(strings):
     per=0
-    strings_txt = '又是新的一天。主人起床呀～,懒虫～,起床咯～,死肥宅～,起床啦～。要上课啦！' 
+    strings_txt = '又是新的一天。主人起床呀,懒虫,起床咯,死肥宅,起床啦。要上课啦！' 
     print(strings[0],strings[1])
-    APPID = 'appid'
-    APIKey = 'AK'
-    SecretKey = 'sk'
+    APPID = '******'
+    APIKey = '*******'
+    SecretKey = '***********************'
     aipSpeech = AipSpeech(APPID,APIKey,SecretKey)
     aipSpeech.setConnectionTimeoutInMillis(5000)
     aipSpeech.setSocketTimeoutInMillis(100000)
 
     result = aipSpeech.synthesis(strings_txt,'zh','1',\
                                 {'vol':10,
-                                'per':per,
-                                'spd':4
+                                'per':'0',
+                                'spd':5
 					})
     if not isinstance(result,dict):
         with open('test_tmp.mp3','wb') as f:
-            f.write(result) 
-            
+            f.write(result)
+     
+    print(dict)
     result = aipSpeech.synthesis(strings[0],'zh','1',\
                                 {'vol':10,
-                                'per':per,
-                                'spd':5
+                                'per':'0',
+                                'spd':6
 					})
     if not isinstance(result,dict):
         with open('test_tmp.mp3','ab') as f:
             f.write(result) 
    
+    print(dict)
     result = aipSpeech.synthesis(strings[1],'zh','1',\
                                 {'vol':10,
-                                'per':per,
-                                'spd':5
+                                'per':'0',
+                                'spd':6
 					})
     if not isinstance(result,dict):
         with open('test_tmp.mp3','ab') as f:
             f.write(result) 
+
+    print(dict)
 
 
 #执行的主函数
